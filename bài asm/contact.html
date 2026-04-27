@@ -1,0 +1,136 @@
+<html>
+<head>
+	<title>Liên Hệ - ZịtVôTri</title>
+	<link rel="stylesheet" href="style.css">
+	
+</head>
+<body>
+	<div class="hero">
+		<div class="navbar">
+			<nav class="nav-menu">
+				<a href="index.html" class="nav-link">Trang chủ</a>
+				<a href="products.html" class="nav-link">Sản phẩm</a>
+				<a href="contact.html" class="nav-link">Liên hệ</a>
+			</nav>
+		</div>
+
+		<section class="contact-section">
+			<div class="contact-wrapper">
+				<div class="contact-container">
+					<h2>Liên Hệ</h2>
+					<div id="notification" class="notification"></div>
+					<form id="contactForm">
+						<div class="form-group">
+							<label for="name">Họ Tên</label>
+							<input type="text" id="name" name="name" placeholder="Nhập họ tên của bạn" required>
+						</div>
+
+						<div class="form-group">
+							<label for="email">Gmail</label>
+							<input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+						</div>
+
+						<div class="form-group">
+							<label for="phone">Số Điện Thoại</label>
+							<input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại của bạn" required>
+						</div>
+
+						<div class="form-group">
+							<label for="message">Lời Nhắn</label>
+							<textarea id="message" name="message" placeholder="Nhập lời nhắn của bạn..."></textarea>
+						</div>
+
+						<button type="submit" class="submit-btn">Gửi</button>
+					</form>
+				</div>
+
+				<div class="history-container">
+					<h3>Lịch Sử Tin Nhắn</h3>
+					<div id="historyList" class="history-list"></div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script>
+		// Hiển thị lịch sử khi tải trang
+		document.addEventListener('DOMContentLoaded', function() {
+			loadHistory();
+		});
+
+		// Xử lý submit form
+		document.getElementById('contactForm').addEventListener('submit', function(e) {
+			e.preventDefault();
+
+			// Lấy dữ liệu form
+			const name = document.getElementById('name').value;
+			const email = document.getElementById('email').value;
+			const phone = document.getElementById('phone').value;
+			const message = document.getElementById('message').value;
+
+			// Tạo đối tượng tin nhắn
+			const messageData = {
+				name: name,
+				email: email,
+				phone: phone,
+				message: message,
+				time: new Date().toLocaleString('vi-VN')
+			};
+
+			// Lưu vào localStorage
+			let history = JSON.parse(localStorage.getItem('contactHistory')) || [];
+			history.unshift(messageData);
+			localStorage.setItem('contactHistory', JSON.stringify(history));
+
+			// Hiển thị thông báo thành công
+			showNotification('✓ Gửi tin nhắn thành công!', 'success');
+
+			// Reset form
+			this.reset();
+
+			// Cập nhật lịch sử
+			loadHistory();
+		});
+
+		// Hàm hiển thị thông báo
+		function showNotification(message, type) {
+			const notification = document.getElementById('notification');
+			notification.textContent = message;
+			notification.className = 'notification ' + type;
+			notification.style.display = 'block';
+
+			setTimeout(function() {
+				notification.style.display = 'none';
+			}, 3000);
+		}
+
+		// Hàm tải lịch sử
+		function loadHistory() {
+			const history = JSON.parse(localStorage.getItem('contactHistory')) || [];
+			const historyList = document.getElementById('historyList');
+			historyList.innerHTML = '';
+
+			if (history.length === 0) {
+				historyList.innerHTML = '<p class="no-history">Chưa có tin nhắn nào</p>';
+				return;
+			}
+
+			history.forEach((item, index) => {
+				const historyItem = document.createElement('div');
+				historyItem.className = 'history-item';
+				historyItem.innerHTML = `
+					<div class="history-header">
+						<strong>${item.name}</strong>
+						<span class="history-time">${item.time}</span>
+					</div>
+					<p class="history-email"><strong>Email:</strong> ${item.email}</p>
+					<p class="history-phone"><strong>SĐT:</strong> ${item.phone}</p>
+					<p class="history-message"><strong>Tin nhắn:</strong> ${item.message}</p>
+				`;
+				historyList.appendChild(historyItem);
+			});
+		}
+	</script>
+
+</body>
+</html>

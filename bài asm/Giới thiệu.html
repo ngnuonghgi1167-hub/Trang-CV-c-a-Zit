@@ -1,0 +1,362 @@
+<html>
+<head>
+	<title>Giới Thiệu - ZịtVôTri</title>
+	<link rel="stylesheet" href="style.css">
+    <style>
+        	.about-page {
+			width: 100%;
+			min-height: 100vh;
+			background-image: url(images/backgroud.jpg);
+			background-size: cover;
+			background-position: center;
+			background-attachment: fixed;
+			padding: 120px 20px 80px;
+			box-sizing: border-box;
+		}
+
+		.about-container {
+			max-width: 1000px;
+			margin: 0 auto;
+		}
+
+		.about-header {
+			text-align: center;
+			color: #fdfcfb;
+			margin-bottom: 60px;
+		}
+
+		.about-header h1 {
+			font-size: 50px;
+			margin-bottom: 20px;
+			color: #ff8787;
+		}
+
+		.about-content {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 50px;
+			align-items: start;
+			margin-bottom: 60px;
+		}
+
+		.about-avatar {
+			text-align: center;
+		}
+
+		.avatar-circle {
+			width: 300px;
+			height: 300px;
+			background: rgba(10, 25, 47, 0.6);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto;
+			font-size: 150px;
+			border: 3px solid rgba(255, 107, 107, 0.5);
+			box-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+		}
+
+		.about-info {
+			background: rgba(10, 25, 47, 0.7);
+			padding: 40px;
+			border-radius: 20px;
+			backdrop-filter: blur(10px);
+			color: #fdfcfb;
+			box-shadow: 0 8px 32px 0 rgba(255, 107, 107, 0.5);
+			border: 2px solid rgba(255, 255, 255, 0.2);
+		}
+
+		.about-info h2 {
+			font-size: 32px;
+			margin-bottom: 20px;
+			color: #ff8787;
+		}
+
+		.about-info p {
+			font-size: 16px;
+			line-height: 1.8;
+			margin-bottom: 15px;
+		}
+
+		.skills-section,
+		.passion-section {
+			background: rgba(10, 25, 47, 0.7);
+			padding: 40px;
+			border-radius: 20px;
+			backdrop-filter: blur(10px);
+			margin-bottom: 40px;
+			color: #fdfcfb;
+			box-shadow: 0 8px 32px 0 rgba(255, 107, 107, 0.5);
+			border: 2px solid rgba(255, 255, 255, 0.2);
+		}
+
+		.skills-section h2,
+		.passion-section h2 {
+			font-size: 36px;
+			margin-bottom: 30px;
+			color: #ff8787;
+			text-align: center;
+		}
+
+		.skills-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+			gap: 20px;
+		}
+
+		.skill-item {
+			background: rgba(10, 25, 47, 0.5);
+			padding: 20px;
+			border-radius: 10px;
+			text-align: center;
+			transition: all 0.3s ease;
+			border: 2px solid rgba(255, 107, 107, 0.3);
+		}
+
+		.skill-item:hover {
+			background: rgba(10, 25, 47, 0.8);
+			transform: translateY(-10px);
+			border-color: #ff8787;
+			box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+		}
+
+		.skill-item .icon {
+			font-size: 40px;
+			margin-bottom: 10px;
+		}
+
+		.skill-item .name {
+			font-size: 18px;
+			font-weight: bold;
+			margin-bottom: 8px;
+		}
+
+		.skill-item .level {
+			font-size: 14px;
+			color: #ff8787;
+		}
+
+		.passion-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 20px;
+		}
+
+		.passion-item {
+			background: rgba(10, 25, 47, 0.5);
+			padding: 25px;
+			border-radius: 10px;
+			text-align: center;
+			transition: all 0.3s ease;
+			border: 2px solid rgba(255, 107, 107, 0.3);
+		}
+
+		.passion-item:hover {
+			background: rgba(10, 25, 47, 0.8);
+			transform: scale(1.05);
+			border-color: #ff8787;
+			box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+		}
+
+		.passion-item .icon {
+			font-size: 50px;
+			margin-bottom: 15px;
+		}
+
+		.passion-item .title {
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		.passion-item .description {
+			font-size: 14px;
+			line-height: 1.6;
+		}
+
+		.navbar {
+			background: rgba(0, 0, 0, 0.3);
+			backdrop-filter: blur(10px);
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 100;
+			height: auto;
+			margin: 0;
+			padding: 15px 0;
+		}
+
+		.avatar-img {
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 5px solid rgba(255, 255, 255, 0.3);
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+		}
+
+		.about-section {
+			background: rgba(255, 255, 255, 0.1);
+			padding: 40px;
+			border-radius: 15px;
+			backdrop-filter: blur(10px);
+			margin-bottom: 40px;
+			color: #fdfcfb;
+			border: 2px solid rgba(255, 255, 255, 0.2);
+		}
+
+		.skill-box {
+			background: rgba(255, 255, 255, 0.15);
+			padding: 20px;
+			border-radius: 10px;
+			text-align: center;
+			transition: all 0.3s ease;
+			border: 2px solid rgba(255, 255, 255, 0.3);
+		}
+
+		.skill-box:hover {
+			border-color: #ffd700;
+			transform: translateY(-5px);
+		}
+
+		.passion-box {
+			background: rgba(255, 255, 255, 0.15);
+			padding: 25px;
+			border-radius: 10px;
+			text-align: center;
+			transition: all 0.3s ease;
+			border: 2px solid rgba(255, 255, 255, 0.3);
+		}
+
+		.passion-box:hover {
+			border-color: #ffd700;
+			transform: scale(1.05);
+		}
+
+		@media (max-width: 768px) {
+			.about-content {
+				grid-template-columns: 1fr;
+			}
+
+			.about-header h1 {
+				font-size: 36px;
+			}
+
+			.skills-grid,
+			.passion-grid {
+				grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			}
+
+			.avatar-img {
+				width: 250px;
+				height: 250px;
+			}
+		}
+    </style>
+	
+</head>
+<body>
+	<div class="navbar">
+		<div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+			<nav class="nav-menu">
+				<a href="index.html" class="nav-link">Trang chủ</a>
+				<a href="products.html" class="nav-link">Sản phẩm</a>
+				<a href="contact.html" class="nav-link">Liên hệ</a><br>
+            </nav>
+		</div>
+	</div>
+
+	<section class="about-page">
+		<div class="about-container">
+			<!-- Header Section -->
+			<div class="about-header">
+				<h1>Zịt - Về Bản Thân</h1>
+				<p>Một lập trình viên đam mê học hỏi và sáng tạo</p>
+			</div>
+
+			<!-- About Me Section -->
+			<div class="about-section">
+				<h2>👋 Về Tôi</h2>
+				<div class="about-content">
+					<div class="about-avatar">
+						
+                        <div class="about-avatar">
+	<img src="images/tôi.jpg" alt="Avatar của Zịt" class="avatar-img">
+</div>
+					</div>
+					<div class="about-text-content">
+						<p class="about-text">
+							Xin chào! Tôi là Danh hay còn được mọi người gọi là  Zịt, một lập trình viên trẻ với niềm đam mê phát triển web và công nghệ. Tôi luôn tìm kiếm cơ hội để học hỏi những công nghệ mới, giải quyết các vấn đề phức tạp, và tạo ra các sản phẩm có ý nghĩa. Với kinh nghiệm làm việc trên nhiều dự án, tôi đã phát triển kỹ năng quản lý thời gian và làm việc nhóm hiệu quả.
+						</p>
+						<p> Phone: 0704931908 </p>
+						<p> Email: zitvotri@gmail.com</p><br>
+						<p class="about-text">
+							Tôi tin rằng lập trình không chỉ là viết code, mà còn là về tạo ra trải nghiệm tuyệt vời cho người dùng. Mục tiêu của tôi là trở thành một full-stack developer chuyên nghiệp và đóng góp vào cộng đồng công nghệ.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Skills Section -->
+			<div class="about-section">
+				<h2>🎯 Kỹ Năng</h2>
+				<div class="skills-grid">
+					<div class="skill-box">
+						<h3>HTML & CSS</h3>
+						<p>Tạo giao diện web đẹp và responsive</p>
+					</div>
+					<div class="skill-box">
+						<h3>JavaScript</h3>
+						<p>Lập trình logic và tương tác người dùng</p>
+					</div>
+					<div class="skill-box">
+						<h3>React</h3>
+						<p>Xây dựng ứng dụng web hiện đại</p>
+					</div>
+					<div class="skill-box">
+						<h3>Python</h3>
+						<p>Lập trình backend và xử lý dữ liệu</p>
+					</div>
+					<div class="skill-box">
+						<h3>Git & GitHub</h3>
+						<p>Quản lý phiên bản mã nguồn</p>
+					</div>
+					<div class="skill-box">
+						<h3>UI/UX Design</h3>
+						<p>Thiết kế giao diện người dùng</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Passion Section -->
+			<div class="about-section">
+				<h2>❤️ Đam Mê & Sở Thích</h2>
+				<div class="passion-grid">
+					<div class="passion-box">
+						<div class="passion-icon">💻</div>
+						<h3>Web Development</h3>
+						<p>Tôi yêu thích tạo ra các website tương tác và có tính năng tuyệt vời. Mỗi dự án là một cơ hội để học hỏi và cải thiện kỹ năng.</p>
+					</div>
+					<div class="passion-box">
+						<div class="passion-icon">📚</div>
+						<h3>Học Tập Liên Tục</h3>
+						<p>Tôi luôn cập nhật với các công nghệ mới và xu hướng trong ngành. Việc học hỏi là một phần không thể thiếu của cuộc sống tôi.</p>
+					</div>
+					<div class="passion-box">
+						<div class="passion-icon">🎨</div>
+						<h3>Thiết Kế Sáng Tạo</h3>
+						<p>Tôi quan tâm đến việc tạo ra những thiết kế đẹp mắt và người dùng thân thiện. Sự kết hợp giữa mã và nghệ thuật là tuyệt vời.</p>
+					</div>
+					<div class="passion-box">
+						<div class="passion-icon">🚀</div>
+						<h3>Đổi Mới & Sáng Tạo</h3>
+						<p>Tôi yêu thích thử nghiệm các ý tưởng mới và tìm cách giải quyết các vấn đề theo cách không tồn tại. Sáng tạo là linh hồn của tôi.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

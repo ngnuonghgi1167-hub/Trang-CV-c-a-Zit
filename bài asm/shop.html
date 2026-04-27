@@ -1,0 +1,102 @@
+<html>
+<head>
+	<title>Chi Tiết Sản Phẩm - ZịtVôTri</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="hero">
+		<div class="navbar">
+			<nav class="nav-menu">
+				<a href="index.html" class="nav-link">Trang chủ</a>
+				<a href="products.html" class="nav-link">Sản phẩm</a>
+				<a href="contact.html" class="nav-link">Liên hệ</a>
+			</nav>
+		</div>
+
+		<section class="shop-section">
+			<div class="shop-container">
+				<div class="shop-back">
+					<a href="products.html" class="back-btn">← Quay Lại</a>
+				</div>
+
+				<div class="shop-content">
+					<div class="shop-image">
+						<img id="shopImage" src="https://via.placeholder.com/400x300?text=Sản+Phẩm" alt="Sản phẩm">
+					</div>
+
+					<div class="shop-info">
+						<h1 id="shopName">Tên Sản Phẩm</h1>
+						<div class="shop-price">
+							<span id="shopPrice">Giá: Liên hệ</span>
+						</div>
+						
+						<div class="shop-description">
+							<h3>Chi Tiết Sản Phẩm</h3>
+							<p id="shopDescription">Mô tả chi tiết sản phẩm sẽ hiển thị ở đây</p>
+						</div>
+
+						<div class="shop-actions">
+							<button class="action-btn buy-btn">Mua Ngay</button>
+							<button class="action-btn contact-btn" onclick="window.location.href='contact.html'">Liên Hệ Tư Vấn</button>
+						</div>
+
+						<div class="shop-details">
+							<h3>Thông Tin Thêm</h3>
+							<ul>
+								<li><strong>Trạng Thái:</strong> <span id="shopStatus">Đang phát triển</span></li>
+								<li><strong>Loại:</strong> <span id="shopType">Dự Án</span></li>
+								<li><strong>Hỗ Trợ:</strong> Email, Điện thoại, Chat</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script>
+		// Lấy dữ liệu từ localStorage hoặc URL params
+		document.addEventListener('DOMContentLoaded', function() {
+			// Lấy product ID từ URL
+			const params = new URLSearchParams(window.location.search);
+			const productId = params.get('id') || 1;
+			
+			// Dữ liệu sản phẩm
+			const products = {
+				1: {
+					name: 'Thế Giới Đa Vũ Trụ',
+					price: 'Chưa phát hành',
+					description: 'Dự án đang trong quá trình thực hiện. Một dự án kỳ thú khám phá các vũ trụ khác nhau với đồ họa 3D tuyệt vời.',
+					image: 'images/đavutru.png',
+					status: 'Chưa phát hành',
+					type: 'Dự Án Game'
+				},
+				2: {
+					name: 'Dự Án Shop Bán Mô Hình',
+					price: 'Chưa phát hành',
+					description: 'Dự án đang trong quá trình thực hiện. Nền tảng thương mại điện tử chuyên bán các mô hình thu nhập độc đáo.',
+					image: 'images/shop xe.png',
+					status: 'Chưa phát hành',
+					type: 'Website Thương Mại'
+				},
+				
+			};
+
+			// Hiển thị thông tin sản phẩm
+			const product = products[productId] || products[1];
+			document.getElementById('shopImage').src = product.image;
+			document.getElementById('shopName').textContent = product.name;
+			document.getElementById('shopPrice').textContent = 'Giá: ' + product.price;
+			document.getElementById('shopDescription').textContent = product.description;
+			document.getElementById('shopStatus').textContent = product.status;
+			document.getElementById('shopType').textContent = product.type;
+		});
+
+		// Nút Mua Ngay
+		document.querySelector('.buy-btn').addEventListener('click', function() {
+			alert('Cảm ơn bạn quan tâm! Sản phẩm này sẽ sớm được bán trên cửa hàng của chúng tôi.');
+		});
+	</script>
+
+</body>
+</html>
